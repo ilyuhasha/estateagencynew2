@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>estateAgency</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<div style = "padding-top: 270px; padding-left: 40%">
+  <form action="/" sethod="get" style = "color: white">
+    Поиск по название объявления: <input type="text" name="title">
+    <input type="submit" value="Поиск"/>
+  </form>
+</div>
+
+<header>
+  <nav>
+    <div class = "merc">АГЕНСТВО НЕДВИЖИМОСТИ</div>
+    <div class="menu">
+      <ul>
+        <a class="link" href="#home">Главная</a>
+        <a class="link" href="http://localhost:8080/login">Вход</a>
+        <a class="link" href="http://localhost:8080/register">Регистрация</a>
+      </ul>
+    </div>
+  </nav>
+</header>
+<div class="Gradient9">
+  <div class = "vert" style = "background: #181818">
+    <div class="gradient9" style = "flex-direction: column" th:each="product : ${products}">
+      <a th:href="@{/product/{id}(id=${product.id})}" class="product-link">
+        <h3 class="product-title" th:text="'«' + ${product.title} + '»'"></h3><br><br>
+      </a>
+      <p class="product-description" th:text="${product.description}"></p><br><br>
+      <p class="product-price" th:text="'Цена: ' + ${product.price} + '₽'"></p><br><br>
+    </div>
+  </div>
+  <div class = "zxc">
+    <div  style = "color: white">
+      <h3>создайте новое объявление</h3>
+      <form th:action="@{/product/create}" method="post">
+        Адрес: <input type="text" name="title"/><br><br>
+        Описание: <input type="text" name="description"/><br><br>
+        Цена: <input type="number" name="price"/><br><br>
+        Город: <input type="text" name="city"/><br><br>
+        Имя: <input type="text" name="author"/><br><br>
+        Телефон: <input type="number" name="telefone"/><br><br>
+        Форма продажи: <select name="form">
+        <option>Выберите из списка</option>
+        <option>Аренда</option>
+        <option>Продажа</option>
+      </select><br><br>
+        <input type="submit" value="Добавить товар"/>
+      </form>
+    </div>
+  </div>
+</div>
+<!--<section id="section8">-->
+<!--  <div class="Gradient9">-->
+<!--    <div class="gradient9">Gradient 50</div>-->
+<!--    <div class="gradient9">Gradient 51</div>-->
+<!--    <div class="gradient9">Gradient 52</div>-->
+<!--  </div>-->
+<!--</section>-->
+
+
+
+
+
+
+<!--<div th:each="product : ${products}">-->
+<!--  <p>-->
+<!--    <b th:text="${product.title}"></b>-->
+<!--    <span th:text="${product.price}"></span> |-->
+<!--    <a th:href="@{/product/{id}(id=${product.id})}">Podrobnee...</a>-->
+<!--  </p>-->
+<!--</div>-->
+<!--<hr>-->
+<!--<h3>create new tovar</h3>-->
+<!--<form th:action="@{/product/create}" method="post">-->
+<!--  Название: <input type="text" name="title"/><br><br>-->
+<!--  Описание: <input type="text" name="description"/><br><br>-->
+<!--  Цена: <input type="number" name="price"/><br><br>-->
+<!--  Город: <input type="text" name="city"/><br><br>-->
+<!--  Имя: <input type="text" name="author"/><br><br>-->
+<!--  <input type="submit" value="Добавить товар"/>-->
+<!--</form>-->
+</body>
+
+</html>
